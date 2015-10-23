@@ -22,7 +22,7 @@
 	      	}
 	    #nav {
 	line-height:10px;
-	background-color:green;
+	background-color:yellow;
 	width:100%;
 	margin:auto;
 	padding:0;
@@ -114,10 +114,44 @@
 	map.addControl(new OpenLayers.Control.PanZoomBar());
 	
       }
-    
-  <!-- function addr_search() {
+  
+  // Asetetaan sijainti ositteen perusteella  
+  function addr_search() {
   	var inp = document.getElementById("addr");	
-  	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) { -->
+  	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
+  	var items = [];	
+  	$.each(data, function(key, val) {
+  		items.push(
+    			"<li><a href='#' onclick='chooseAddr(" +
+    			val.lat + ", " + val.lon + ");return false;'>" + val.display_name +
+    			'</a></li>'
+  		);
+	});
+  	}
+  	
+	$('#results').empty();
+    	if (items.length != 0) {
+      		$('<p>', { html: "Search results:" }).appendTo('#results');
+      		$('<ul/>', {
+        	'class': 'my-new-list',
+        	html: items.join('')
+      		}).appendTo('#results');
+    		} else {
+      		$('<p>', { html: "No results found" }).appendTo('#results');
+    		}
+  		});
+  	function chooseAddr(lat, lng, type) {
+  		var location = new L.LatLng(lat, lng);
+  		map.panTo(location);
+		if (type == 'city' || type == 'administrative') {
+    			map.setZoom(11);
+  		} else {
+    			map.setZoom(13);
+  			}
+		}
+
+
+  }
 
  </script>
   </head>
@@ -133,12 +167,10 @@
     <!-- Sivupalkki -->
     <div class="container-fluid">
     	<div id="nav">
-    		<div id="search">
-  			<input type="text" name="addr" value="" id="addr" size="10" />
-  			<button type="button" onclick="addr_search();">Search</button>
-  			<div id="results"/>
-  		</div>
-
+    		<input type="text" name="addr" value="" id="addr" size="20" />
+  		<button type="button" class="btn btn-primary" onclick="addr_search();">Search</button>
+  		<div id="results"/>
+  	
     		<button type="button" class="btn btn-primary">Find route</button>
     		<button type="button" class="btn btn-primary">Analyze</button>
     	</div>
