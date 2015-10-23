@@ -22,11 +22,11 @@
 	      	}
 	    #nav {
 	line-height:10px;
-	background-color:yellow;
+	background-color:green;
 	width:100%;
 	margin:auto;
 	padding:0;
-	text-align:center;
+	text-align:left;
 		}
 	    #footer {
 	background-color:#006600;
@@ -116,7 +116,7 @@
       }
   
   // Asetetaan sijainti ositteen perusteella  
-  function addr_search() {
+  <!-- function addr_search() {
   	var inp = document.getElementById("addr");	
   	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
   	var items = [];	
@@ -149,9 +149,7 @@
     			map.setZoom(13);
   			}
 		}
-
-
-  }
+	} -->
 
  </script>
   </head>
