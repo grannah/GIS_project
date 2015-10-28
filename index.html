@@ -18,7 +18,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:green;
+	background-color:yellow;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -77,8 +77,7 @@
 		controls: [
 		new OpenLayers.Control.Navigation(),
 		new OpenLayers.Control.PanZoomBar(),
-		// new OpenLayers.Control.LayerSwitcher()
-		new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')});
+		new OpenLayers.Control.LayerSwitcher()
 		]
 	});
 	
