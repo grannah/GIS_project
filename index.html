@@ -77,7 +77,8 @@
 		controls: [
 		new OpenLayers.Control.Navigation(),
 		new OpenLayers.Control.PanZoomBar(),
-		new OpenLayers.Control.LayerSwitcher()
+		// new OpenLayers.Control.LayerSwitcher()
+		new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')});
 		]
 	});
 	
@@ -312,7 +313,6 @@
 		<label for="track">Track my position</label>
 	</div>
 	
-	<div id="dropdown">
 	 	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
   		<span class="caret"></span></button>
   		<ul class="dropdown-menu">
