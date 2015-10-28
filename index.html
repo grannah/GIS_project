@@ -81,6 +81,7 @@
 		]
 	});
 	
+
 	// Lisaa openstreetmapin layeriksi
 	OSMmap = new OpenLayers.Layer.OSM();
 	
@@ -362,13 +363,23 @@
 
     <!-- Valikkopalkki -->
     <div class="container-fluid">    
+	
+    <!-- Tehdaan nappulat paikannukselle ja trackille -->
 	<div id="nav">
-    	<!-- <button type="button" class="btn btn-primary">Analyze</button> -->
-	<!-- Tehdaan nappulat paikannukselle ja trackille -->		
 		<button id="locate">Paikanna minut!</button>
 		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 	</div>
+	
+	<div id="dropdown">
+	 	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  		<span class="caret"></span></button>
+  		<ul class="dropdown-menu">
+    		<li><a href="#">HTML</a></li>
+    		<li><a href="#">CSS</a></li>
+		<li><a href="#">JavaScript</a></li>
+  		</ul>
+	</div>	
     </div>
     
     <!-- Lisaa kartan halutulla koolla -->
@@ -376,10 +387,7 @@
 	<div id="map">
     </div>
 
-    <!-- Sijoittaa sijannin funktiosta sivulle haluttuun paikkaan -->
-    <p id="Location"></p>
-    
-    
+   
     <!--lisaa navigoi ja nayta kohteen tiedot pallukat alle, nayta tiedot ei toim i
     <ul id="controlToggle">
 	<li>
