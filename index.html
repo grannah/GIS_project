@@ -18,7 +18,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:yellow;
+	background-color:red;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -77,9 +77,13 @@
 		controls: [
 		new OpenLayers.Control.Navigation(),
 		new OpenLayers.Control.PanZoomBar(),
-		new OpenLayers.Control.LayerSwitcher()
+		//new OpenLayers.Control.LayerSwitcher()
 		]
 	});
+	
+	var external_control = new OpenLayers.Control.LayerSwitcher({
+		div: document.getElementById('external_control') });	
+		map.addControl(external_control);
 	
 
 	// Lisaa openstreetmapin layeriksi
