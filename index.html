@@ -68,6 +68,11 @@
 	feature.popup = null;
       }
       
+      //Muuttaa tason nakyvyyden
+      /* function changeVisibility(feature)
+      	if map.feature.getVisibility(true){feature.setVisibility{false}
+      	else map.feature.setVisibility{true} */
+      	
  
       function init() {
 	//popupin muuttujat
@@ -319,13 +324,18 @@
 		<label for="track">Track my position</label>
 		
 		
-		<!-- <div id="external_control"></div> -->
+		<!-- <div id="external_control"></div> 
 	
 	 	<div class="dropdown">
   		<button class="btn btn-defalut dropdown-toggle" type="button" id="external-control" data-toggle="dropdown">Valitse karttatasot
   		<span class="caret"></span></button>
 		<ul class="dropdown-menu">
-      			<li><a href="#">Open street map</a></li> 
+      			<li><a href="#">Open street map</a></li> -->
+		
+		<label>Taso</label>
+    		<select id="type" class="form-control">
+      			<option value="liikuntapaikat_wms">liikuntapaikat</option>
+       		</select>
 		
 		<!-- liikuntapaikat_wms, 
 		vaesto_wms, 
