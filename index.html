@@ -91,6 +91,9 @@
 	var external_control = new OpenLayers.Control.LayerSwitcher({
 		div: document.getElementById('external_control') });	
 		map.addControl(external_control);
+	
+	map.addControl(new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')}));
+
 		
 
 
@@ -323,28 +326,28 @@
 		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 		
-		
+		<div id="layerswitcher" class="olControlLayerSwitcher"></div>
 		<!-- <div id="external_control"></div> 
 	
 	 	<div class="dropdown">
   		<button class="btn btn-defalut dropdown-toggle" type="button" id="external-control" data-toggle="dropdown">Valitse karttatasot
   		<span class="caret"></span></button>
 		<ul class="dropdown-menu">
-      			<li><a href="#">Open street map</a></li> -->
+      			<li><a href="#">Open street map</a></li> 
 		
 		<label>Taso</label>
     		<select id="type" class="form-control">
       			<option value="liikuntapaikat_wms">liikuntapaikat</option>
-       		</select>
+       		</select>  -->
 		
 		<!-- liikuntapaikat_wms, 
 		vaesto_wms, 
 		vaesto_kp_wms, 
 		kuntosalit_wfs, 
 		uimapaikat_wfs, 
-		vaesto_kp_wfs</li> -->
+		vaesto_kp_wfs</li> 
   		</ul>
-		</div> 
+		</div> -->
 		
 	
 	</div>	
