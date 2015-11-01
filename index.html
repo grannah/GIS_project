@@ -98,10 +98,9 @@
 	
 	
 	map.addControl(new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')}));
+	layerSwitcher = map.getControlsByClass("OpenLayers.Control.LayerSwitcher")[0];
 	layerSwitcher.baseLbl.innerText = "Pohjakartta"
-  	layerSwitcher.dataLbl.innerText = "Karttatasot"
-		
-
+	layerSwitcher.dataLbl.innerText = "Naytettavat tasot"
 
 	// Lisaa openstreetmapin layeriksi
 	OSMmap = new OpenLayers.Layer.OSM();
@@ -333,16 +332,10 @@
 		<label for="track">Track my position</label>
 		
 		
+	<div id="layerswitcher"></div>	
 		
-		<div data-uk-dropdown="{mode:'click'}">
 
-    		<!-- This is the element toggling the dropdown -->
-    		<div id="layerswitcher"></div>
 
-    <!-- This is the dropdown -->
-    <div class="uk-dropdown">...</div>
-
-</div>
 	<!--	<div id="external_control"></div>
 	
 	 	<div class="dropdown">
