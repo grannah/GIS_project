@@ -72,12 +72,7 @@
 	feature.popup = null;
       }
       
-      //Muuttaa tason nakyvyyden
-      /* function changeVisibility(feature)
-      	if map.feature.getVisibility(true){feature.setVisibility{false}
-      	else map.feature.setVisibility{true} */
-      	
- 
+     
       function init() {
 	//popupin muuttujat
 	var selectControl, selectFeature;
@@ -87,20 +82,12 @@
 		controls: [
 		new OpenLayers.Control.Navigation(),
 		new OpenLayers.Control.PanZoomBar(),
-		//new OpenLayers.Control.LayerSwitcher()
 		]
 	});
 	
 	// Lisaa layerswitcherin kartan ulkopuolelle
-	var external_control = new OpenLayers.Control.LayerSwitcher({
-		div: document.getElementById('external_control') });	
-		map.addControl(external_control);
-	
-	
 	map.addControl(new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')}));
-	layerSwitcher = map.getControlsByClass("OpenLayers.Control.LayerSwitcher")[0];
-	layerSwitcher.baseLbl.innerText = "Pohjakartta"
-	layerSwitcher.dataLbl.innerText = "Naytettavat tasot"
+	
 
 	// Lisaa openstreetmapin layeriksi
 	OSMmap = new OpenLayers.Layer.OSM();
@@ -336,8 +323,7 @@
 		
 
 
-	<!--	<div id="external_control"></div>
-	
+	<!--	
 	 	<div class="dropdown">
   		<button class="btn btn-defalut dropdown-toggle" type="button" id="external-control" data-toggle="dropdown">Valitse karttatasot
   		<span class="caret"></span></button>
