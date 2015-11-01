@@ -40,7 +40,8 @@
 	list-style: none;
 		}
 	    #layerswitcher {
-	
+	width:30%;
+	text-align:left;
 	    	}
     </style>
     
@@ -95,8 +96,10 @@
 		div: document.getElementById('external_control') });	
 		map.addControl(external_control);
 	
+	
 	map.addControl(new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')}));
-
+	layerSwitcher.baseLbl.innerText = "Pohjakartta"
+  	layerSwitcher.dataLbl.innerText = "Karttatasot"
 		
 
 
@@ -329,7 +332,17 @@
 		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 		
-		<div id="layerswitcher"></div>
+		
+		
+		<div data-uk-dropdown="{mode:'click'}">
+
+    		<!-- This is the element toggling the dropdown -->
+    		<div id="layerswitcher"></div>
+
+    <!-- This is the dropdown -->
+    <div class="uk-dropdown">...</div>
+
+</div>
 	<!--	<div id="external_control"></div>
 	
 	 	<div class="dropdown">
