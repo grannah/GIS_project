@@ -72,19 +72,16 @@
 	feature.popup = null;
       }
       
-      var activeLayer = null;
-      function changeLayer() {
-   	var layer = map.getLayersByName(this.value)[0];
-   	if(activeLayer != null) {
-     	activeLayer.setVisibility(false);
+      //tason nakyvyyden muuttaminen
+      function changeVisibility(layer) {
+   	var layer = map.getLayersByName('layer')[0]; 
+   	if(layer.getVisibility == false) {
+     	layer.setVisibility(true);
       	}
-   	layer.setVisibility(true);
-   	activeLayer = layer;
+   	layer.setVisibility(false);
       }
 
 
-
-     
       function init() {
 	//popupin muuttujat
 	var selectControl, selectFeature;
@@ -330,13 +327,13 @@
 		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 		
-		<select onchange="changeLayer()">
-		<option value="liikuntapaikat_wms">liikuntapaikat_wms</option>
-		<option value="vaesto_wms">vaesto_wms</option>
-		<option value="vaesto_kp_wms">vaesto_kp_wms</option>
-		<option value="kuntosalit_wfs">kuntosalit_wfs</option>
-		<option value="uimapaikat_wfs">uimapaikat_wfs</option>
-		<option value="vaesto_kp_wfs">vaesto_kp_wfs</option>
+		<select onchange="changeVisibility('layer')">
+			<option value="liikuntapaikat_wms">liikuntapaikat_wms</option>
+			<option value="vaesto_wms">vaesto_wms</option>
+			<option value="vaesto_kp_wms">vaesto_kp_wms</option>
+			<option value="kuntosalit_wfs">kuntosalit_wfs</option>
+			<option value="uimapaikat_wfs">uimapaikat_wfs</option>
+			<option value="vaesto_kp_wfs">vaesto_kp_wfs</option>
 		</select>
 		
 	<div id="layerswitcher"></div>	
