@@ -18,7 +18,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:green;
+	background-color:yellow;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -73,12 +73,13 @@
       }
       
       //tason nakyvyyden muuttaminen
-      function changeVisibility(layer) {
-   	var layer = map.getLayersByName('layer')[0]; 
-   	if(layer.getVisibility == false) {
-     	layer.setVisibility(true);
+      function changeVisibility() {
+   	// var layer = map.getLayersByName('layer')[0]; 
+   	var s_layer = document.getElementById('layer').value;
+   	if(s_layer.getVisibility == false) {
+     	s_layer.setVisibility(true);
       	}
-   	layer.setVisibility(false);
+   	s_layer.setVisibility(false);
       }
 
 
@@ -327,7 +328,7 @@
 		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 		
-		<select onchange="changeVisibility('layer')">
+		<select id=layer onchange="changeVisibility()">
 			<option value="liikuntapaikat_wms">liikuntapaikat_wms</option>
 			<option value="vaesto_wms">vaesto_wms</option>
 			<option value="vaesto_kp_wms">vaesto_kp_wms</option>
