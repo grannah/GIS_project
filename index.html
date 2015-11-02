@@ -74,12 +74,13 @@
       
       //tason nakyvyyden muuttaminen
       function changeVisibility() {
-   	// var layer = map.getLayersByName('layer')[0]; 
-   	var s_layer = document.getElementById('layer').value;
+   	var s_layer = map.getLayersByName('layer')[0];
    	if(s_layer.getVisibility == false) {
      	s_layer.setVisibility(true);
       	}
+      	else if (s_layer.getVisibility == true) {
    	s_layer.setVisibility(false);
+      	}
       }
 
 
@@ -328,7 +329,7 @@
 		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 		
-		<select id=layer onchange="changeVisibility()">
+		<select id="layer" name="layer" onchange="changeVisibility()">
 			<option value="liikuntapaikat_wms">liikuntapaikat_wms</option>
 			<option value="vaesto_wms">vaesto_wms</option>
 			<option value="vaesto_kp_wms">vaesto_kp_wms</option>
