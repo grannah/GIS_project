@@ -50,16 +50,17 @@
 	    #controlToggle li {
 	list-style: none;
 		}
-	    #multiselect {
+		
+    </style>
+    <!-- #multiselect {
     	color: #FFFFFF;
     	background: transparent;
     	font-size: 20px;
     	padding: 2px 10px;
 	width: 450px;
-	    	}
-    </style>
-    
+	    	} -->
     <!-- Tassa scriptissa luodaan kaikki kartassa esiintyvat funktiot ja tyokalut -->
+    
     <script>
 
       OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";	
@@ -374,9 +375,7 @@
     	</div>
    </div>
 
-  </body>
-  
-  <script type="text/javascript">
+   <script type="text/javascript">
     	$(document).ready(function() {
         $('#multiselect').multiselect();
     		// enableClickableOptGroups: true
@@ -384,5 +383,5 @@
                 // alert('Changed option ' + $(option).val() + '.');
     	});
   </script>
-  
+   </body>
 </html>
