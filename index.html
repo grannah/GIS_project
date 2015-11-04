@@ -351,7 +351,7 @@
 		<label for="track">Track my position</label>
 		
 	<!-- Luodaan dropdown-valikko karttatasoille -->	
-		<select class="multiselect" multiple="multiple">
+		<select class="multiselect" id=layer name="layer" multiple="multiple" onchange="changeVisibility(this)">
 			<option value="" selected>Valitse karttatasot</option>
 			<option value="liikuntapaikat_wms">Liikuntapaikat</option>
 			<option value="vaesto_wms">vaesto_wms</option>
