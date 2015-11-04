@@ -8,7 +8,17 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>   
     <title>Liikuntapaikat kartalla</title>
     <script type='text/javascript' src='http://www.openlayers.org/api/OpenLayers.js'></script>
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+ 
+<!-- Include the plugin's CSS and JS: -->
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+    
     <style>
+    
 	    #header {
 	background-color:#006600;
 	color:black;
@@ -18,7 +28,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:yellow;
+	background-color:green;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -44,7 +54,7 @@
     	background: transparent;
     	font-size: 20px;
     	padding: 2px 10px;
-	width: 400px;
+	width: 450px;
 	    	}
     </style>
     
@@ -312,6 +322,12 @@
 		
       }
     </script>
+    
+    <script type="text/javascript">
+    	$(document).ready(function() {
+        $('#multidrop').multiselect();
+    	});
+   </script>
   </head>
 	
   <body onload="init()">
@@ -332,9 +348,9 @@
 		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 		
-		<select id="layer" name="layer" onchange="changeVisibility(this)">
-			
-			<option value="" style="display:none">Valitse karttatasot</option>
+	<!-- Luodaan dropdown-valikko karttatasoille -->	
+		<select id="multidrop" name="layer" multiple="multiple" onchange="changeVisibility(this)">
+			<option value="" selected>Valitse karttatasot</option>
 			<option value="liikuntapaikat_wms">Liikuntapaikat</option>
 			<option value="vaesto_wms">vaesto_wms</option>
 			<option value="vaesto_kp_wms">vaesto_kp_wms</option>
@@ -345,17 +361,6 @@
 		
 	<div id="layerswitcher"></div>	
 	
-	<!--  	<div class="dropdown">
-  		<button class="btn btn-defalut dropdown-toggle" type="button" id="external-control" data-toggle="dropdown">Valitse karttatasot
-  		<span class="caret"></span></button>
-		<ul class="dropdown-menu">
-			
-      		</ul>
-		</div>
-		
-	
-  		 -->
-		
 	</div>	
     </div>
     
