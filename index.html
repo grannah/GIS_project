@@ -28,7 +28,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:green;
+	background-color:red;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -49,7 +49,7 @@
 	    #controlToggle li {
 	list-style: none;
 		}
-	    #select {
+	    #multiselect {
     	color: #FFFFFF;
     	background: transparent;
     	font-size: 20px;
@@ -96,7 +96,11 @@
       	}
       }
 
-
+    
+    	$(document).ready(function() {
+        $('#multiselect').multiselect();
+    	});
+      
       function init() {
 	//popupin muuttujat
 	var selectControl, selectFeature;
@@ -321,12 +325,7 @@
 	document.getElementById('track').checked = false;
 		
       }
-    </script>
     
-    <script type="text/javascript">
-    	$(document).ready(function() {
-        $('#multidrop').multiselect();
-    	});
    </script>
   </head>
 	
@@ -349,7 +348,7 @@
 		<label for="track">Track my position</label>
 		
 	<!-- Luodaan dropdown-valikko karttatasoille -->	
-		<select id="multidrop" name="layer" multiple="multiple" onchange="changeVisibility(this)">
+		<select class="multiselect" id=layer name="layer" multiple="multiple" onchange="changeVisibility(this)">
 			<option value="" selected>Valitse karttatasot</option>
 			<option value="liikuntapaikat_wms">Liikuntapaikat</option>
 			<option value="vaesto_wms">vaesto_wms</option>
