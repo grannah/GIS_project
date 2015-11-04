@@ -9,13 +9,14 @@
     <title>Liikuntapaikat kartalla</title>
     <script type='text/javascript' src='http://www.openlayers.org/api/OpenLayers.js'></script>
     
+    <!-- Include Twitter Bootstrap and jQuery: -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
- 
-<!-- Include the plugin's CSS and JS: -->
-<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
-<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+     
+    <!-- Include the plugin's CSS and JS: -->
+    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
     
     <style>
     
@@ -97,12 +98,6 @@
       }
 
     
-    	$(document).ready(function() {
-        $('#multiselect').multiselect();
-    		enableClickableOptGroups: true
-    		onChange: function(option, checked, select) {
-                alert('Changed option ' + $(option).val() + '.');
-    	});
       
       function init() {
 	//popupin muuttujat
@@ -380,4 +375,14 @@
    </div>
 
   </body>
+  
+  <script type="text/javascript">
+    	$(document).ready(function() {
+        $('#multiselect').multiselect();
+    		// enableClickableOptGroups: true
+    		// onChange: function(option, checked, select) {
+                // alert('Changed option ' + $(option).val() + '.');
+    	});
+  </script>
+  
 </html>
