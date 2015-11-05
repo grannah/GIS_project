@@ -89,7 +89,7 @@
       
       //tason nakyvyyden muuttaminen
       function changeVisibility() {
-   	var s_layer = map.getLayersByName('layer');
+   	var s_layer = document.getElementById("layerswitch").value;
    	if(s_layer.getVisibility == false) {
      	s_layer.setVisibility(true);
       	}
@@ -347,7 +347,7 @@
 		<label for="track">Track my position</label>
 		
 	<!-- Luodaan dropdown-valikko karttatasoille     -->	
-		<select id=layer name="layer" onchange="changeVisibility">
+		<select id="layerswitch" name="layer" onchange="changeVisibility">
 			<option value="" selected>Valitse karttatasot</option>
 			<option value="liikuntapaikat_wms">Liikuntapaikat</option>
 			<option value="vaesto_wms">vaesto_wms</option>
