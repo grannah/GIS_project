@@ -29,7 +29,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:orange;
+	background-color:green;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -88,8 +88,8 @@
       }
       
       //tason nakyvyyden muuttaminen
-      function changeVisibility(layer) {
-   	var s_layer = map.getLayersByName('layer')[0];
+      function changeVisibility() {
+   	var s_layer = map.getLayersByName('layer');
    	if(s_layer.getVisibility == false) {
      	s_layer.setVisibility(true);
       	}
