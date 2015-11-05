@@ -29,7 +29,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:green;
+	background-color:yellow;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -87,9 +87,10 @@
 	feature.popup = null;
       }
       
-      //tason nakyvyyden muuttaminen
-      function changeVisibility() {
-   	var s_layer = document.getElementById("layerswitch").value;
+      //tason nakyvyyden muuttaminen <!-- var s_layer = document.getElementById("layerswitch").value; -->
+      function changeVisibility(select) {
+      	var s_layer = select.options[select.selectedIndex];
+   	
    	if(s_layer.getVisibility == false) {
      	s_layer.setVisibility(true);
       	}
