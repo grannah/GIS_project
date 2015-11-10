@@ -9,15 +9,6 @@
     <title>Liikuntapaikat kartalla</title>
     <script type='text/javascript' src='http://www.openlayers.org/api/OpenLayers.js'></script>
     
-    <!-- Include Twitter Bootstrap and jQuery:
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-     
-    <!-- Include the plugin's CSS and JS: 
-    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/> -->
-    
     <style>
     
 	    #header {
@@ -51,14 +42,34 @@
 	list-style: none;
 		}
 		
+	#multiselect {
+        width: 200px;
+    		}
+    	#selectBox {
+        position: relative;
+    		}
+    	#selectBox select {
+        width: 100%;
+        font-weight: bold;
+    	}
+    	#overSelect {
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+	}
+    	#checkboxes {
+        display: none;
+        border: 1px #dadada solid;
+    	}
+    	#checkboxes label {
+        display: block;
+    	}
+    	#checkboxes label:hover {
+        background-color: #1e90ff;
+    }
+</style>
+		
     </style>
-    <!-- #multiselect {
-    	color: #FFFFFF;
-    	background: transparent;
-    	font-size: 20px;
-    	padding: 2px 10px;
-	width: 450px;
-	    	} -->
+    
     <!-- Tassa scriptissa luodaan kaikki kartassa esiintyvat funktiot ja tyokalut -->
     
     <script>
@@ -99,7 +110,18 @@
       	}
       }
 
-    
+// chechbox test
+    var expanded = false;
+    function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+    }
       
       function init() {
 	//popupin muuttujat
@@ -347,7 +369,7 @@
 		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 		
-	<!-- Luodaan dropdown-valikko karttatasoille     -->	
+	<!-- Luodaan dropdown-valikko karttatasoille   	
 		<select id="layerswitch" name="layer" onchange="changeVisibility">
 			<option value="" selected>Valitse karttatasot</option>
 			<option value="liikuntapaikat_wms">Liikuntapaikat</option>
@@ -358,7 +380,22 @@
 			<option value="vaesto_kp_wfs">vaesto_kp_wfs</option>
 		</select>
 		
-	<!-- <div id="layerswitcher"></div> -->	
+	 <div id="layerswitcher"></div> -->	
+	<form>
+    	<div class="multiselect">
+        <div class="selectBox" onclick="showCheckboxes()">
+            <select>
+                <option>Select an option</option>
+            </select>
+            <div class="overSelect"></div>
+        </div>
+        <div id="checkboxes">
+            <label for="one"><input type="checkbox" id="one"/>First checkbox</label>
+            <label for="two"><input type="checkbox" id="two"/>Second checkbox </label>
+            <label for="three"><input type="checkbox" id="three"/>Third checkbox</label>
+        </div>
+    	</div>
+	</form>
 	
 	</div>	
     </div>
