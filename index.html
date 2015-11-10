@@ -45,9 +45,7 @@
 	    #multiselect {
         width: 200px;
     		}
-    	    #selectBox {
-        position: relative;
-    		}
+
 
     	    #overSelect {
         position: absolute;
@@ -69,7 +67,10 @@
     <!--    #selectBox select {
         width: 100%;
         font-weight: bold;
-    	} -->
+    	} 
+    	    	    #selectBox {
+        position: relative;
+    		}-->
     	
     <!-- Tassa scriptissa luodaan kaikki kartassa esiintyvat funktiot ja tyokalut -->
     
@@ -387,12 +388,12 @@
     	<!-- <div class="multiselect"> -->
         <div class="selectBox" onclick="showCheckboxes()">
             <select>
-                <option>Select an option</option>
+                <option>Valitse karttatasot</option>
             </select>
             <div class="overSelect"></div>
         </div>
         <div id="checkboxes">
-            <label for="one"><input type="checkbox" id="one"/>Liikuntapaikat</label>
+            <input type="checkbox">Liikuntapaikat</input>
             <label for="two"><input type="checkbox" id="two"/>vaesto_wms</label>
             <label for="three"><input type="checkbox" id="three"/>vaesto_kp_wms</label>
         </div>
