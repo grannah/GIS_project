@@ -41,39 +41,34 @@
 	    #controlToggle li {
 	list-style: none;
 		}
-	
-    	    #multiselect {
+	.multiselect {
         width: 200px;
-    		}
-    	    #selectBox {
+    }
+    .selectBox {
         position: relative;
-    	     	}	   
-    	    #selectBox select {
-        width: 50%;
+    }
+    .selectBox select {
+        width: 100%;
         font-weight: bold;
-    	} 
-    	    #overSelect {
+    }
+    .overSelect {
         position: absolute;
         left: 0; right: 0; top: 0; bottom: 0;
-	}
-    	    #checkboxes {
+    }
+    #checkboxes {
         display: none;
         border: 1px #dadada solid;
-    	}
-       	   #checkboxes label {
+    }
+    #checkboxes label {
         display: block;
-    	}
-    	    #checkboxes label:hover {
+    }
+    #checkboxes label:hover {
         background-color: #1e90ff;
-    	}
+    }
+
     </style>
     
-    <!--
-
-
-    	    	    
-    		}-->
-    	
+  
     <!-- Tassa scriptissa luodaan kaikki kartassa esiintyvat funktiot ja tyokalut -->
     
     <script>
@@ -386,20 +381,21 @@
 		</select>
 		
 	 <div id="layerswitcher"></div> -->	
+
 	<form>
-    	<div class="multiselect"> 
+	<div class="multiselect">
         <div class="selectBox" onclick="showCheckboxes()">
             <select>
-                <option>Valitse karttatasot</option>
+                <option>Select an option</option>
             </select>
             <div class="overSelect"></div>
         </div>
         <div id="checkboxes">
-            <input type="checkbox">Liikuntapaikat</input>
-            <input type="checkbox">vaesto_wms</input>
-            <input type="checkbox">vaesto_kp_wms</input>
+            <label for="one"><input type="checkbox" id="one"/>First checkbox</label>
+            <label for="two"><input type="checkbox" id="two"/>Second checkbox </label>
+            <label for="three"><input type="checkbox" id="three"/>Third checkbox</label>
         </div>
-    	</div> 
+    	</div>
 	</form>
 	
 	</div>	
@@ -418,13 +414,5 @@
     	</div>
    </div>
 
-   <script type="text/javascript">
-    	$(document).ready(function() {
-        $('#multiselect').multiselect();
-    		// enableClickableOptGroups: true
-    		// onChange: function(option, checked, select) {
-                // alert('Changed option ' + $(option).val() + '.');
-    	});
-  </script>
    </body>
 </html>
