@@ -42,34 +42,35 @@
 	list-style: none;
 		}
 		
-	#multiselect {
+	    #multiselect {
         width: 200px;
     		}
-    	#selectBox {
+    	    #selectBox {
         position: relative;
     		}
-    	#selectBox select {
-        width: 100%;
-        font-weight: bold;
-    	}
-    	#overSelect {
+
+    	    #overSelect {
         position: absolute;
         left: 0; right: 0; top: 0; bottom: 0;
 	}
-    	#checkboxes {
+    	    #checkboxes {
         display: none;
         border: 1px #dadada solid;
     	}
-    	#checkboxes label {
+    	    #checkboxes label {
         display: block;
     	}
-    	#checkboxes label:hover {
+    	    #checkboxes label:hover {
         background-color: #1e90ff;
-    }
-</style>
+    	}
+	    	
 		
     </style>
-    
+    <!--    #selectBox select {
+        width: 100%;
+        font-weight: bold;
+    	} -->
+    	
     <!-- Tassa scriptissa luodaan kaikki kartassa esiintyvat funktiot ja tyokalut -->
     
     <script>
@@ -110,7 +111,7 @@
       	}
       }
 
-// chechbox test
+/* chechbox test
     var expanded = false;
     function showCheckboxes() {
         var checkboxes = document.getElementById("checkboxes");
@@ -121,7 +122,7 @@
             checkboxes.style.display = "none";
             expanded = false;
         }
-    }
+    } */
       
       function init() {
 	//popupin muuttujat
@@ -382,7 +383,7 @@
 		
 	 <div id="layerswitcher"></div> -->	
 	<form>
-    	<div class="multiselect">
+    	<!-- <div class="multiselect"> -->
         <div class="selectBox" onclick="showCheckboxes()">
             <select>
                 <option>Select an option</option>
@@ -390,11 +391,11 @@
             <div class="overSelect"></div>
         </div>
         <div id="checkboxes">
-            <label for="one"><input type="checkbox" id="one"/>First checkbox</label>
-            <label for="two"><input type="checkbox" id="two"/>Second checkbox </label>
-            <label for="three"><input type="checkbox" id="three"/>Third checkbox</label>
+            <label for="one"><input type="checkbox" id="one"/>Liikuntapaikat</label>
+            <label for="two"><input type="checkbox" id="two"/>vaesto_wms</label>
+            <label for="three"><input type="checkbox" id="three"/>vaesto_kp_wms</label>
         </div>
-    	</div>
+    	<!--</div> -->
 	</form>
 	
 	</div>	
