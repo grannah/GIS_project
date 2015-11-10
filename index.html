@@ -20,7 +20,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:green;
+	background-color:yellow;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -97,9 +97,9 @@
 	feature.popup = null;
       }
       
-      //tason nakyvyyden muuttaminen <!-- var s_layer = document.getElementById("layerswitch").value; -->
+      //tason nakyvyyden muuttaminen <!-- var sel_layer = document.getElementById("layerswitch").value; -->
       function changeVisibility() {
-      	var sel_layer = select.options[select.selectedIndex];
+      	var sel_layer = document.getElementById();
    	
    	if(sel_layer.getVisibility == false) {
      	sel_layer.setVisibility(true);
@@ -392,8 +392,8 @@
         </div>
         <div id="checkboxes">
             <input type="checkbox" onclick="changeVisibility()" id="liikuntapaikat_wms" checked>Liikuntapaikat</input>
-            <label for="two"><input type="checkbox" onclick="changeVisibility()" id="vaesto_wms"/>vaesto_wms</label>
-            <label for="three"><input type="checkbox" onclick="changeVisibility()" id="vaesto_kp_wms"/>vaesto_kp_wms</label>
+            <input type="checkbox" onclick="changeVisibility()" id="vaesto_wms">vaesto_wms</input>
+            <input type="checkbox" onclick="changeVisibility()" id="vaesto_kp_wms">vaesto_kp_wms</input>
         </div>
     	</div>
 	</form>
