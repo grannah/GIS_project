@@ -18,7 +18,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:green;
+	background-color:yellow;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -50,7 +50,7 @@
 		}
 	#checkboxes {
 	display: none;
-	width:150px;
+	width:100%;
 		}
 	#checkboxes label {
 	display: block;
@@ -76,32 +76,7 @@
 	POPUP = null;
       }
 
-	//Funktio joka muuttaa tason nakyvyyden. Ei toimi viela! 
-       function ChangeVaestoVMS() {
-      	var s_layer = document.getElementById("vaesto_wms")
-	if(s_layer.getVisibility == false) {
-     	s_layer.setVisibility(true);
-      	}
-      	else {
-   	s_layer.setVisibility(false);
-      	}
-      }  
-      
-  
-	// nayttaa dropdown valikon 
-	var expanded = false;
-	function showCheckboxes() {
-	var checkboxes = document.getElementById("checkboxes");
-	if (!expanded) {
-		checkboxes.style.display = "block";
-		expanded = true;
-	} 
-	else {
-		checkboxes.style.display = "none";
-		expanded = false;
-		
-	}
-	} 	
+	
 
       function init() {
 	var wkt = new OpenLayers.Format.WKT();
@@ -384,6 +359,32 @@
 	document.getElementById('track').checked = false;
 */	
 
+	//Funktio joka muuttaa tason nakyvyyden. Ei toimi viela! 
+       function ChangeVaestoVMS() {
+      	//var s_layer = document.getElementById('vaesto_wms')
+	if(vaesto_wms.getVisibility == false) {
+     	vaesto_wms.setVisibility(true);
+      	}
+      	else {
+   	vaesto_wms.setVisibility(false);
+      	}
+      }  
+      
+  
+	// nayttaa dropdown valikon 
+	var expanded = false;
+	function showCheckboxes() {
+	var checkboxes = document.getElementById("checkboxes");
+	if (!expanded) {
+		checkboxes.style.display = "block";
+		expanded = true;
+	} 
+	else {
+		checkboxes.style.display = "none";
+		expanded = false;
+		
+	}
+	} 
 
 
      }
