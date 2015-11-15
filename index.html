@@ -87,6 +87,20 @@
       	}
       } */
 
+	// nayttaa dropdown valikon 
+	var expanded = false;
+	function showCheckboxes() {
+	var checkboxes = document.getElementById("checkboxes");
+	if (!expanded) {
+		checkboxes.style.display = "block";
+		expanded = true;
+	} 
+	else {
+		checkboxes.style.display = "none";
+		expanded = false;
+		
+	}
+	} 	
 
       function init() {
 	var wkt = new OpenLayers.Format.WKT();
@@ -393,7 +407,7 @@
 		<label for="track">Track my position</label>
 -->
 
-	<!-- Luodaan dropdown-valikko karttatasoille -->
+	<!-- Luodaan dropdown-valikko karttatasoille
 		<select id="layerswitch" name="layer" onchange="changeVisibility">
 			<option value="" selected>Valitse karttatasot</option>
 			<option value="liikuntapaikat_wms">Liikuntapaikat</option>
@@ -402,7 +416,7 @@
 			<option value="kuntosalit_wfs">Kuntosalit</option>
 			<option value="uimapaikat_wfs">Uimapaikat</option>
 			<option value="vaesto_kp_wfs">vaesto_kp_wfs</option>
-		</select>
+		</select>   -->
 	</div>
     </div>
     
