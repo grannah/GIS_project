@@ -76,7 +76,32 @@
 	POPUP = null;
       }
 
-	
+	//Funktio joka muuttaa tason nakyvyyden. Ei toimi viela! 
+       function ChangeVaestoVMS() {
+      	//var s_layer = document.getElementById('vaesto_wms')
+	if(vaesto_wms.getVisibility == false) {
+     	vaesto_wms.setVisibility(true);
+      	}
+      	else {
+   	vaesto_wms.setVisibility(false);
+      	}
+      }  
+      
+  
+	// nayttaa dropdown valikon 
+	var expanded = false;
+	function showCheckboxes() {
+	var checkboxes = document.getElementById("checkboxes");
+	if (!expanded) {
+		checkboxes.style.display = "block";
+		expanded = true;
+	} 
+	else {
+		checkboxes.style.display = "none";
+		expanded = false;
+		
+	}
+	} 	
 
       function init() {
 	var wkt = new OpenLayers.Format.WKT();
@@ -358,33 +383,6 @@
 
 	document.getElementById('track').checked = false;
 */	
-
-	//Funktio joka muuttaa tason nakyvyyden. Ei toimi viela! 
-       function ChangeVaestoVMS() {
-      	//var s_layer = document.getElementById('vaesto_wms')
-	if(vaesto_wms.getVisibility == false) {
-     	vaesto_wms.setVisibility(true);
-      	}
-      	else {
-   	vaesto_wms.setVisibility(false);
-      	}
-      }  
-      
-  
-	// nayttaa dropdown valikon 
-	var expanded = false;
-	function showCheckboxes() {
-	var checkboxes = document.getElementById("checkboxes");
-	if (!expanded) {
-		checkboxes.style.display = "block";
-		expanded = true;
-	} 
-	else {
-		checkboxes.style.display = "none";
-		expanded = false;
-		
-	}
-	} 
 
 
      }
