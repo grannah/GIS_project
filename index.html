@@ -55,14 +55,14 @@
         position: absolute;
         left: 0; right: 0; top: 0; bottom: 0;
     		}
-	    #checkboxes {
+	    #layer_checkboxes {
         display: none;
         width: 120px;
               	}
-            #checkboxes label {
+            #layer_checkboxes label {
         display: block;
     		}
-    	    #checkboxes label:hover {
+    	    #layer_checkboxes label:hover {
         background-color: #1e90ff;
     		}
 
@@ -336,14 +336,16 @@
 	document.getElementById('track').checked = false;
 	
 	      //tason nakyvyyden muuttaminen <!-- var sel_layer = document.getElementById("layerswitch").value; -->
-      	document.getElementById('layerswitch').onclick = function () {
-   		if(sel_layer.getVisibility == false) {
-     		sel_layer.setVisibility(true);
-      		}
-      		else if (sel_layer.getVisibility == true) {
-   		sel_layer.setVisibility(false);
-      		}
-      	};
+      	document.getElementById('layer_checkboxes').onclick = function () {
+      		for (var i = 0; i < form.elements.length; i++ ) {
+      			var sel_layer = form.elements[i].id
+      			if(sel_layer.getVisibility == false) {
+     				sel_layer.setVisibility(true);
+      			}
+      			else if (sel_layer.getVisibility == true) {
+   				sel_layer.setVisibility(false);
+      			}		
+       	};
 	
       }
       
@@ -370,7 +372,7 @@
 		<label for="track">Track my position</label>
 	</div>	
 	<!-- Luodaan dropdown-valikko karttatasoille --> 	
-		<select id="layerswitch" name="layer">
+	<!--	<select id="layerswitch" name="layer">
 			<option value="" selected>Valitse karttatasot</option>
 			<option value="liikuntapaikat_wms">Liikuntapaikat</option>
 			<option value="vaesto_wms">vaesto_wms</option>
@@ -380,7 +382,7 @@
 			<option value="vaesto_kp_wfs">vaesto_kp_wfs</option>
 		</select>
 		
-	<!-- <div id="layerswitcher"></div> 	
+	 <div id="layerswitcher"></div> -->	
 
 	<form>
 	<div class="multiselect">
@@ -390,13 +392,13 @@
             </select>
             <div class="overSelect"></div>
         </div>
-        <div id="checkboxes">
-            <input type="checkbox" id="liikuntapaikat_wms" onclick="changeVisibility()" checked>Liikuntapaikat</input>
-            <input type="checkbox" id="vaesto_wms" onclick="changeVisibility()">vaesto_wms</input>
-            <input type="checkbox" id="vaesto_kp_wms" onclick="changeVisibility()" >vaesto_kp_wms</input>
+        <div id="layer_checkboxes">
+            <input type="checkbox" id="liikuntapaikat_wms" checked>Liikuntapaikat</input>
+            <input type="checkbox" id="vaesto_wms">vaesto_wms</input>
+            <input type="checkbox" id="vaesto_kp_wms">vaesto_kp_wms</input>
         </div>
     	</div>
-	</form> -->
+	</form> 
 	
 		
     </div>
