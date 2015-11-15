@@ -35,7 +35,30 @@
 	height:500px;
 	width:100%;
 		}
-
+	#multiselect {
+	width: 200px;
+		}
+	#selectBox {
+	position: relative;
+		}
+	#selectBox select {
+	width: 100%;
+		}
+	#overSelect {
+	position: absolute;
+	left: 0; right: 0; top: 0; bottom: 0;
+		}
+	#checkboxes {
+	display: none;
+	width: 120px;
+		}
+	#checkboxes label {
+	display: block;
+		}
+	#checkboxes label:hover {
+	background-color: #1e90ff;
+		}
+		
     </style>
     
     <!-- Tassa scriptissa luodaan kaikki kartassa esiintyvat funktiot ja tyokalut -->
@@ -382,6 +405,22 @@
 		</select>
 	</div>
     </div>
+    
+    <form>
+	<div class="multiselect">
+		<div class="selectBox" onclick="showCheckboxes()">
+			<select>
+			<option>Valitse karttatasot</option>
+			</select>
+		<div class="overSelect"></div>
+		</div>
+		<div id="checkboxes">
+			<input type="checkbox" id="liikuntapaikat_wms" checked>Liikuntapaikat</input>
+			<input type="checkbox" id="vaesto_wms">vaesto_wms</input>
+			<input type="checkbox" id="vaesto_kp_wms">vaesto_kp_wms</input>
+		</div>
+	</div>
+    </form> 
     
     <!-- Lisaa kartan halutulla koolla -->
     <div class="container-fluid">
