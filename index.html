@@ -50,7 +50,7 @@
 		}
 	#checkboxes {
 	display: none;
-	width: 120px;
+	
 		}
 	#checkboxes label {
 	display: block;
@@ -77,7 +77,8 @@
       }
 
 	//Funktio joka muuttaa tason nakyvyyden. Ei toimi viela! 
-      function ChangeVisibility(s_layer) {
+      function ChangeVisibility(this) {
+      	var s_layer = document.getElementById(this)
 	if(s_layer.getVisibility == false) {
      	s_layer.setVisibility(true);
       	}
@@ -429,9 +430,9 @@
 		<div class="overSelect"></div>
 		</div>
 		<div id="checkboxes">
-			<input type="checkbox" id="liikuntapaikat_wms" onclick="return ChangeVisibility(this)" checked>Liikuntapaikat</input>
-			<input type="checkbox" id="vaesto_wms" onclick="return ChangeVisibility(this)">vaesto_wms</input>
-			<input type="checkbox" id="vaesto_kp_wms" onclick="return ChangeVisibility(this)">vaesto_kp_wms</input>
+			<input type="checkbox" id="liikuntapaikat_wms" onClick="ChangeVisibility(this)" checked>Liikuntapaikat</input>
+			<input type="checkbox" id="vaesto_wms" onClick="ChangeVisibility(this)">vaesto_wms</input>
+			<input type="checkbox" id="vaesto_kp_wms" onClick="ChangeVisibility(this)">vaesto_kp_wms</input>
 		</div>
 	</div>
     </form> 
