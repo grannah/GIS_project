@@ -8,9 +8,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>   
     <title>Liikuntapaikat kartalla</title>
     <script type='text/javascript' src='http://www.openlayers.org/api/OpenLayers.js'></script>
-    
     <style>
-    
 	    #header {
 	background-color:#006600;
 	color:black;
@@ -32,114 +30,54 @@
 	text-align:left;
 	width:100%;
 	padding:5px;
-	margin:0;
 	    	}
 	    #map {
 	height:500px;
 	width:100%;
 		}
-	    #controlToggle li {
-	list-style: none;
-		}
-	    
-	    #multiselect {
-        width: 200px;
-    		}
-            #selectBox {
-        position: relative;
-    		}
-            #selectBox select {
-        width: 100%;
-           	}
-            #overSelect {
-        position: absolute;
-        left: 0; right: 0; top: 0; bottom: 0;
-    		}
-	    #checkboxes {
-        display: none;
-        width: 120px;
-              	}
-            #checkboxes label {
-        display: block;
-    		}
-    	    #checkboxes label:hover {
-        background-color: #1e90ff;
-    		}
 
     </style>
     
-  
     <!-- Tassa scriptissa luodaan kaikki kartassa esiintyvat funktiot ja tyokalut -->
-    
     <script>
 
       OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";	
-      
-      //funktiot popupille
-      function onPoupClose(evt) {
-	selectControl.unselect(selectedFeature);
+
+	//Luodaan POPUP globaaliksi ja poistetaan vanha popup, jos on olemassa
+	//Koskee vain wms popuppia
+      var POPUP;
+      function deletePopup() {
+	if (! POPUP) return;
+	map.removePopup(POPUP);
+	POPUP.destroy();
+	POPUP = null;
       }
 
-      function onFeatureSelect(feature) {
-	selectedFeature = feature;
-	popup = new OpenLayers.Popup.FramedCloud("chicken",
-		feature.geometry.getBounds().getCenterLotLat(),
-		null,
-		"<dis style='font-size:.8em'>Kuntoilupaikka: " + feature.tyyppi_nimi_fi + "</div>",
-		null, true, onPopupClose);
-	feature.popup = popup;
-	map.addPopup(popup);
-      }
+	//Funktio joka muuttaa tason nakyvyyden. Ei toimi viela! 
+/*      function changeVisibility(select) {
+	var s_layer = select.options[select.selectedIndex];
+   	if(s_layer.getVisibility == false) {
+     	s_layer.setVisibility(true);
+      	}
+      	else if (s_layer.getVisibility == true) {
+   	s_layer.setVisibility(false);
+      	}
+      } */
 
-      function onFeatureUnselect(feature) {
-	map.removePopup(feature.popup);
-	feature.popup.destroy();
-	feature.popup = null;
-      }
-      
 
-	// nayttaa dropdown valikon 
-    	var expanded = false;
-    	function showCheckboxes() {
-        var checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
-             	} 
- 	else {
-            checkboxes.style.display = "none";
-            expanded = false;
-                }
-    	} 
-    	
-    	//tason nakyvyyden muuttaminen <!-- var sel_layer = document.getElementById("layerswitch").value; -->
-      	document.getElementById('checkboxes').onclick = function () {
-      		for (var i = 0; i < form.elements.length; i++ ) {
-      			var sel_layer = form.elements[i].id
-      			if(sel_layer.getVisibility == false) {
-     				sel_layer.setVisibility(true);
-      			}
-      			else if (sel_layer.getVisibility == true) {
-   				sel_layer.setVisibility(false);
-      			}		
-       	}
-      
       function init() {
-	//popupin muuttujat
-	var selectControl, selectFeature;
+	var wkt = new OpenLayers.Format.WKT();
+	
       	// Luo kartan, jossa on navigointi mahdollisuus
       	map = new OpenLayers.Map("map", 
 		{units:'m',
 		controls: [
 		new OpenLayers.Control.Navigation(),
-		new OpenLayers.Control.PanZoomBar(),
+		new OpenLayers.Control.Zoom(),//new OpenLayers.Control.PanZoomBar(),
+		new OpenLayers.Control.LayerSwitcher()
 		]
 	});
 	
-	// Lisaa layerswitcherin kartan ulkopuolelle
-	map.addControl(new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')}));
-	
-
 	// Lisaa openstreetmapin layeriksi
 	OSMmap = new OpenLayers.Layer.OSM();
 	
@@ -233,7 +171,7 @@
 		});
 
 	vaesto_kp_wfs.setVisibility(false);
-
+	
 	// Lisataan aikasemmin luodut tasot kartalle
 	map.addLayers([
 		OSMmap, 
@@ -256,32 +194,91 @@
 	map.getProjectionObject()
 	), 12);
 
-	
-
 	// Tehdaan popup, jolla voidaan etsia wms tietoja 
+	// Hakee kaikkien WMS tiedot, jotka on nakyvilla
 	info = new OpenLayers.Control.WMSGetFeatureInfo({
 		url: 'http://130.233.249.20:8080/geoserver/WMS/wms',
 		title: 'Identify features by clicking',
 		queryVisible: true,
 		eventListeners: {
 			getfeatureinfo: function(event) {
-				map.addPopup(new OpenLayers.Popup.FramedCloud(
-					"chicken",
-					map.getLonLatFromPixel(event.xy),
-					null,
-					event.text,
-					null,
-					true
-				));
+				//if (event.text > 0) {
+					deletePopup();
+					POPUP = new OpenLayers.Popup.FramedCloud(
+						"chicken",
+						map.getLonLatFromPixel(event.xy),
+						null,
+						event.text,
+						null,
+						true
+					);
+					map.addPopup(POPUP);
+				//}
+			
 			}
 		}
 	});
 	map.addControl(info);
 	info.activate();	
+
+	//wps varten
+	client = new OpenLayers.WPSClient({
+		servers:{
+			opengeo: "http://130.233.249.20:8080/geoserver/wps"
+		}
+	});
 	
+	//tehdaan bufferille oma layer
+	//var buffer = new OpenLayers.Feature.Vector();
+	//attribute = {name: "Bufferi", bar: "foo"};
+	muotoilu = {'opacity': 0.66, 'isBaseLayer': false, 'visibility': false, 'projection': 'EPSG4326'};
+	var buffer_layer = new OpenLayers.Layer.Vector("Bufferi", muotoilu)
+	map.addLayers([buffer_layer])
+
+	//wfs toimiva popup. Tekee popupin kuntosaleista ja uimapaikoista
+	var controls = {
+		selector: new OpenLayers.Control.SelectFeature([kuntosalit_wfs, uimapaikat_wfs],
+		 { onSelect: createPopup, onUnselect: destroyPopup })
+	};	
 	
-	// Tehdaan paikannus napin taakse
-	var vector = new OpenLayers.Layer.Vector('vector');
+	//tekee popupin ja samalla bufferin sen ymparille
+	function createPopup (feature) {
+		feature.popup = new OpenLayers.Popup.FramedCloud(
+			"pop",
+			feature.geometry.getBounds().getCenterLonLat(),
+			null,
+			'<div>Liikuntapaikka: '+feature.attributes.nimi_fi+'</div>',
+			null,
+			true,
+			function() { controls['selector'].unselectAll(); }
+		);
+		map.addPopup(feature.popup);
+		//kokeillaan voidaanko laittaa wps tanne sisalle
+		buffer = client.getProcess('opengeo', 'JTS:buffer');
+		buffer.execute({
+			inputs: {
+				geom: feature,
+				distance: 10000
+			},
+			success: function(outputs) {
+				//var buffer = new OpenLayers.Feature.Vector(outputs, attribute, muotoilu);
+				//var buffer_layer = new OpenLayers.Layer.Vector("testi")
+				var feature = new OpenLayers.Format.WKT().read(outputs.text)
+				buffer_layer.addFeatures([feature])
+				//map.addLayers([buffer_layer])
+			}
+		});
+		
+	}
+	function destroyPopup(feature) {
+		feature.popup.destroy();
+		feature.popup = null;
+	}
+	map.addControl(controls['selector']);
+	controls['selector'].activate();
+
+	// Paikannus napin takana
+	var vector = new OpenLayers.Layer.Vector('Sijainti');
 	map.addLayers([vector]);
 
 	var geolocate = new OpenLayers.Control.Geolocate({
@@ -316,7 +313,7 @@
 
 		if (firstGeolocation) {
 		    map.zoomToExtent(vector.getDataExtent());
-		    pulsate(circle);
+		    //pulsate(circle);
 		    firstGeolocation = false;
 		    this.bind = true
 		}
@@ -329,12 +326,13 @@
 	document.getElementById('locate').onclick = function () {
 		vector.removeAllFeatures();
 		geolocate.deactivate();
-		document.getElementById('track').checked = false;
+//		document.getElementById('track').checked = false;
 		geolocate.watch = false;
 		firstGeolocation = true;
 		geolocate.activate();
-	};
-        
+	}
+
+/*      saastetaan toistaiseksi, silla saatetaan tarvita ehkapa  
 	document.getElementById('track').onclick = function() {
 		vector.removeAllFeatures();
 		geolocate.deactivate();
@@ -346,15 +344,17 @@
 	};
 
 	document.getElementById('track').checked = false;
-	
-	
+*/	
+
+
+
      }
-   </script>
+    </script>
   </head>
 	
   <body onload="init()">
   	
-    <!-- Header osio-->
+    <!-- Header osio, johon tulee otsikko ja ehka joki valikko -->
     <div class="container-fluid">
    	<div id="header">
     		<h1>Liikuntapaikat kartalla</h1>
@@ -363,15 +363,15 @@
 
     <!-- Valikkopalkki -->
     <div class="container-fluid">    
-	
-    <!-- Tehdaan nappulat paikannukselle ja trackille -->
 	<div id="nav">
+	<!-- Tehdaan nappulat paikannukselle ja trackille -->		
 		<button id="locate">Paikanna minut!</button>
-		<input type="checkbox" name="track" id="track">
+<!--		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
-	</div>	
-	<!-- Luodaan dropdown-valikko karttatasoille --> 	
-	<!--	<select id="layerswitch" name="layer">
+-->
+
+	<!-- Luodaan dropdown-valikko karttatasoille -->
+		<select id="layerswitch" name="layer" onchange="changeVisibility">
 			<option value="" selected>Valitse karttatasot</option>
 			<option value="liikuntapaikat_wms">Liikuntapaikat</option>
 			<option value="vaesto_wms">vaesto_wms</option>
@@ -380,26 +380,7 @@
 			<option value="uimapaikat_wfs">Uimapaikat</option>
 			<option value="vaesto_kp_wfs">vaesto_kp_wfs</option>
 		</select>
-		
-	 <div id="layerswitcher"></div> -->	
-
-	<form>
-	<div class="multiselect">
-        <div class="selectBox" onclick="showCheckboxes()">
-            <select>
-                <option>Valitse karttatasot</option>
-            </select>
-            <div class="overSelect"></div>
-        </div>
-        <div id="checkboxes">
-            <input type="checkbox" id="liikuntapaikat_wms" checked>Liikuntapaikat</input>
-            <input type="checkbox" id="vaesto_wms">vaesto_wms</input>
-            <input type="checkbox" id="vaesto_kp_wms">vaesto_kp_wms</input>
-        </div>
-    	</div>
-	</form> 
-	
-		
+	</div>
     </div>
     
     <!-- Lisaa kartan halutulla koolla -->
@@ -407,13 +388,15 @@
 	<div id="map">
     </div>
 
-   
-   <!-- Tahan voidaan laittaa sivun alaosan tietoja, kuten tekijat ja copyright merkinnat -->
+    <!-- Sijoittaa sijannin funktiosta sivulle haluttuun paikkaan -->
+    <p id="Location"></p>
+    
+        <!-- Tahan voidaan laittaa sivun alaosan tietoja, kuten tekijat ja copyright merkinnat -->
    <div class="container-fluid">
 	 <div id="footer">
     		<h>GIS Software Development course</h>
     	</div>
    </div>
 
-   </body>
+  </body>
 </html>
