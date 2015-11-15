@@ -69,8 +69,7 @@
     </style>
     
   
-    <!--              
-              	Tassa scriptissa luodaan kaikki kartassa esiintyvat funktiot ja tyokalut -->
+    <!-- Tassa scriptissa luodaan kaikki kartassa esiintyvat funktiot ja tyokalut -->
     
     <script>
 
@@ -98,17 +97,6 @@
 	feature.popup = null;
       }
       
-      //tason nakyvyyden muuttaminen <!-- var sel_layer = document.getElementById("layerswitch").value; -->
-      function changeVisibility() {
-      	var sel_layer = document.getElementById();
-   	
-   	if(sel_layer.getVisibility == false) {
-     	sel_layer.setVisibility(true);
-      	}
-      	else if (sel_layer.getVisibility == true) {
-   	sel_layer.setVisibility(false);
-      	}
-      }
 
 	// nayttaa dropdown valikon 
     	var expanded = false;
@@ -346,8 +334,19 @@
 	};
 
 	document.getElementById('track').checked = false;
-		
+	
+	      //tason nakyvyyden muuttaminen <!-- var sel_layer = document.getElementById("layerswitch").value; -->
+      	document.getElementById('layerswitch').onclick = function () {
+   		if(sel_layer.getVisibility == false) {
+     		sel_layer.setVisibility(true);
+      		}
+      		else if (sel_layer.getVisibility == true) {
+   		sel_layer.setVisibility(false);
+      		}
+      	};
+	
       }
+      
     
    </script>
   </head>
@@ -370,8 +369,8 @@
 		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 	</div>	
-	<!-- Luodaan dropdown-valikko karttatasoille   	
-		<select id="layerswitch" name="layer" onchange="changeVisibility">
+	<!-- Luodaan dropdown-valikko karttatasoille --> 	
+		<select id="layerswitch" name="layer">
 			<option value="" selected>Valitse karttatasot</option>
 			<option value="liikuntapaikat_wms">Liikuntapaikat</option>
 			<option value="vaesto_wms">vaesto_wms</option>
@@ -381,7 +380,7 @@
 			<option value="vaesto_kp_wfs">vaesto_kp_wfs</option>
 		</select>
 		
-	 <div id="layerswitcher"></div> -->	
+	<!-- <div id="layerswitcher"></div> 	
 
 	<form>
 	<div class="multiselect">
@@ -397,7 +396,7 @@
             <input type="checkbox" id="vaesto_kp_wms" onclick="changeVisibility()" >vaesto_kp_wms</input>
         </div>
     	</div>
-	</form>
+	</form> -->
 	
 		
     </div>
