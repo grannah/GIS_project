@@ -18,7 +18,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:yellow;
+	background-color:green;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -377,15 +377,16 @@
 */	
 
 	//Funktio joka muuttaa tason nakyvyyden. Ei toimi viela! 
-       function ChangeVaestoVMS() {
-       	var layer = document.getElementById("vaesto_wms");
-      	if(layer.getVisibility == false) {
-     	layer.setVisibility(true);
-      	}
-      	else {
-   	layer.setVisibility(false);
-      	}
-      }  
+       //function ChangeVaestoVMS() {
+       document.getElementById("ch_vaesto_wms").onclick = function() {
+       		var layer = document.getElementById("vaesto_wms") 
+      		if(layer.getVisibility == false) {
+     		layer.setVisibility(true);
+      		}
+      		else {
+   		layer.setVisibility(false);
+      		}
+      	};  
 
      }
     </script>
@@ -432,7 +433,7 @@
 		</div>
 		<div id="checkboxes">
 			<input type="checkbox" id="liikuntapaikat_wms" onClick="ChangeVisibility()" checked>Liikuntapaikat</input>
-			<input type="checkbox" id="vaesto_wms" onClick="ChangeVaestoVMS()">vaesto_wms</input>
+			<input type="checkbox" id="ch_vaesto_wms" >vaesto_wms</input>
 			<input type="checkbox" id="vaesto_kp_wms" onClick="ChangeVisibility()">vaesto_kp_wms</input>
 		</div>
 	</div>
