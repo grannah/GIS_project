@@ -20,7 +20,7 @@
 	      	}
 	    #nav {
 	line-height:30px;
-	background-color:yellow;
+	background-color:green;
 	width:100%;
 	text-align:left;
 	padding:5px;
@@ -55,14 +55,14 @@
         position: absolute;
         left: 0; right: 0; top: 0; bottom: 0;
     		}
-	    #layer_checkboxes {
+	    #checkboxes {
         display: none;
         width: 120px;
               	}
-            #layer_checkboxes label {
+            #checkboxes label {
         display: block;
     		}
-    	    #layer_checkboxes label:hover {
+    	    #checkboxes label:hover {
         background-color: #1e90ff;
     		}
 
@@ -336,7 +336,7 @@
 	document.getElementById('track').checked = false;
 	
 	      //tason nakyvyyden muuttaminen <!-- var sel_layer = document.getElementById("layerswitch").value; -->
-      	document.getElementById('layer_checkboxes').onclick = function () {
+      	document.getElementById('checkboxes').onclick = function () {
       		for (var i = 0; i < form.elements.length; i++ ) {
       			var sel_layer = form.elements[i].id
       			if(sel_layer.getVisibility == false) {
@@ -392,7 +392,7 @@
             </select>
             <div class="overSelect"></div>
         </div>
-        <div id="layer_checkboxes">
+        <div id="checkboxes">
             <input type="checkbox" id="liikuntapaikat_wms" checked>Liikuntapaikat</input>
             <input type="checkbox" id="vaesto_wms">vaesto_wms</input>
             <input type="checkbox" id="vaesto_kp_wms">vaesto_kp_wms</input>
