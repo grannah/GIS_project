@@ -111,6 +111,18 @@
             expanded = false;
                 }
     	} 
+    	
+    	//tason nakyvyyden muuttaminen <!-- var sel_layer = document.getElementById("layerswitch").value; -->
+      	document.getElementById('checkboxes').onclick = function () {
+      		for (var i = 0; i < form.elements.length; i++ ) {
+      			var sel_layer = form.elements[i].id
+      			if(sel_layer.getVisibility == false) {
+     				sel_layer.setVisibility(true);
+      			}
+      			else if (sel_layer.getVisibility == true) {
+   				sel_layer.setVisibility(false);
+      			}		
+       	}
       
       function init() {
 	//popupin muuttujat
@@ -335,21 +347,8 @@
 
 	document.getElementById('track').checked = false;
 	
-	      //tason nakyvyyden muuttaminen <!-- var sel_layer = document.getElementById("layerswitch").value; -->
-      	document.getElementById('checkboxes').onclick = function () {
-      		for (var i = 0; i < form.elements.length; i++ ) {
-      			var sel_layer = form.elements[i].id
-      			if(sel_layer.getVisibility == false) {
-     				sel_layer.setVisibility(true);
-      			}
-      			else if (sel_layer.getVisibility == true) {
-   				sel_layer.setVisibility(false);
-      			}		
-       	};
 	
-      }
-      
-    
+     }
    </script>
   </head>
 	
