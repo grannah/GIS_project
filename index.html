@@ -54,7 +54,7 @@
 		}
 	#checkboxes label {
 	display: block;
-	width:100%;
+	width:10%;
 		}
 	#checkboxes label:hover {
 	background-color: #1e90ff;
@@ -79,11 +79,12 @@
 
 	//Funktio joka muuttaa tason nakyvyyden. Ei toimi viela! 
        function ChangeVaestoVMS() {
-      	if(vaesto_wms.getVisibility == false) {
-     	vaesto_wms.setVisibility(true);
+       	var layer = document.getElementById("vaesto_wms")
+      	if(layer.getVisibility == false) {
+     	layer.setVisibility(true);
       	}
       	else {
-   	vaesto_wms.setVisibility(false);
+   	layer.setVisibility(false);
       	}
       }  
       
