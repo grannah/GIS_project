@@ -77,16 +77,16 @@
       }
 
 	//Funktio joka muuttaa tason nakyvyyden. Ei toimi viela! 
-/*      function changeVisibility(select) {
-	var s_layer = select.options[select.selectedIndex];
-   	if(s_layer.getVisibility == false) {
+      function ChangeVisibility(s_layer) {
+	if(s_layer.getVisibility == false) {
      	s_layer.setVisibility(true);
       	}
-      	else if (s_layer.getVisibility == true) {
+      	else {
    	s_layer.setVisibility(false);
       	}
-      } */
-
+      } 
+      
+  
 	// nayttaa dropdown valikon 
 	var expanded = false;
 	function showCheckboxes() {
@@ -429,9 +429,9 @@
 		<div class="overSelect"></div>
 		</div>
 		<div id="checkboxes">
-			<input type="checkbox" id="liikuntapaikat_wms" checked>Liikuntapaikat</input>
-			<input type="checkbox" id="vaesto_wms">vaesto_wms</input>
-			<input type="checkbox" id="vaesto_kp_wms">vaesto_kp_wms</input>
+			<input type="checkbox" id="liikuntapaikat_wms" onclick="return ChangeVisibility(this)" checked>Liikuntapaikat</input>
+			<input type="checkbox" id="vaesto_wms" onclick="return ChangeVisibility(this)">vaesto_wms</input>
+			<input type="checkbox" id="vaesto_kp_wms" onclick="return ChangeVisibility(this)">vaesto_kp_wms</input>
 		</div>
 	</div>
     </form> 
