@@ -409,7 +409,7 @@
 <!--		<input type="checkbox" name="track" id="track">
 		<label for="track">Track my position</label>
 -->
-
+	<input type="checkbox" id="liikuntapaikat_wms" onClick="ChangeVisibility(this.id)" checked>Liikuntapaikat</input>
 	<!-- Luodaan dropdown-valikko karttatasoille
 		<select id="layerswitch" name="layer" onchange="changeVisibility">
 			<option value="" selected>Valitse karttatasot</option>
@@ -423,7 +423,7 @@
 	</div>
     </div>
     
-    <form>
+   <!-- <form>
 	<div class="multiselect">
 		<div class="selectBox" onclick="showCheckboxes()">
 			<select>
@@ -432,12 +432,12 @@
 		<div class="overSelect"></div>
 		</div>
 		<div id="checkboxes">
-			<input type="checkbox" id="liikuntapaikat_wms" onClick="ChangeVisibility()" checked>Liikuntapaikat</input>
-			<input type="checkbox" id="ch_vaesto_wms" >vaesto_wms</input>
-			<input type="checkbox" id="vaesto_kp_wms" onClick="ChangeVisibility()">vaesto_kp_wms</input>
+			<input type="checkbox" id="liikuntapaikat_wms" onClick="ChangeVisibility(this.id)" checked>Liikuntapaikat</input>
+			<input type="checkbox" id="ch_vaesto_wms" layer="vaesto_wms" onClick="ChangeVisibility(this.id)" >vaesto_wms</input>
+			<input type="checkbox" id="vaesto_kp_wms" onClick="ChangeVisibility(this.id, this.value)">vaesto_kp_wms</input>
 		</div>
 	</div>
-    </form> 
+    </form> -->
     
     <!-- Lisaa kartan halutulla koolla -->
     <div class="container-fluid">
